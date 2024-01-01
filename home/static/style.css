@@ -1,0 +1,15 @@
+.icon {
+    font-size: 25px;
+}
+
+.rm-decoration {
+    text-decoration: none !important;
+}
+
+footer {
+    --animate-duration: 8s;
+}
+
+.main-nav>ul>.nav-item>a {
+    font-size: 18px;
+}

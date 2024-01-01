@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>Iury Hirabara</title>
+{% endblock title %}
+
+
+{% block content %}
+<div class="protected content">
+    <div id="about" class="container is-big section-cta to-reveal animate__animated animate__delay-1s animate__fadeIn">
+        <div class="container-fluid fancy-border">
+            <div class="row black-bg">
+                <div class="col-lg-7 block-cta">
+                    <h2>Iury Hirabara</h2>
+                    <br>
+                    <p class="text-justify">Olá, seja bem-vindo ao meu portfólio.</p>
+                    <p class="text-justify">
+                        Tenho 23 anos e sou <strong>desenvolvedor backend</strong> com mais
+                        de um ano de
+                        experiência, e neste espaço você poderá conhecer alguns dos meus projetos pessoais e as
+                        tecnologias que utilizei para criá-los.
+                    </p>
+                    <p class="text-justify">
+                        Também te convido a acessar o meu currículo, onde você
+                        encontrará mais informações sobre as minhas qualificações e trajetória profissional.
+                    </p>
+                    <!-- <a href="#" class="fancy-button">Me envie uma mensagem</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main role="main">
+
+        <div class="container mb-5 animate__animated animate__delay-1s animate__fadeIn">
+
+            <h4 id="proj" class="mb-5">Projetos</h4>
+            <div class="row mb-5">
+
+                {% for project in projects %}
+                <div class="col-md-3 col-sm-6 mt-3">
+                    <div id="{{ project.id }}" class="card fancy-border mb-4 {{ project.card.border }}"
+                        style="height: 610px;">
+                        <div class="card-header" style="height: 70px;">
+                            {% for technology in project.technologies.all %}
+                            {{ technology.title }}
+                            {% endfor %}
+                        </div>
+                        <div class="card-body {{ project.card.text }}">
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+                        </div>
+
+                        {% if project.online %}
+                        <a href="{{ project.url }}" target="_blank" class="fancy-button">Acesse aqui</a>
+                        {% else %}
+                        <a href="#" class="fancy-button"
+                            style="cursor: default; background: transparent; color: #8082a0; pointer-events: none;box-shadow: none;">
+                            Em andamento
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <h4 id="tech" class="my-5">Tecnologias</h4>
+            <div class="row d-flex flex-row justify-content-between mx-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codeigniter/codeigniter-plain-wordmark.svg"
+                    width="100" data-toggle="tooltip" data-placement="top" title="Codeigniter" />
+
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" width="100"
+                    data-toggle="tooltip" data-placement="top" title="PHP" />
+
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain-wordmark.svg"
+                    width="100" data-toggle="tooltip" data-placement="top" title="Linux / Ubuntu" />
+
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" width="100"
+                    data-toggle="tooltip" data-placement="top" title="Golang" />
+
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg"
+                    width="100" data-toggle="tooltip" data-placement="top" title="Django" />
+
+                <img class="tech"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg"
+                    width="100" data-toggle="tooltip" data-placement="top" title="Python" />
+
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg"
+                    width="100" data-toggle="tooltip" data-placement="top" title="Vue.js" />
+
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                    width="100" data-toggle="tooltip" data-placement="top" title="JavaScript" />
+
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"
+                    width="100" data-toggle="tooltip" data-placement="top" title="MySQL" />
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+{% endblock content %}
